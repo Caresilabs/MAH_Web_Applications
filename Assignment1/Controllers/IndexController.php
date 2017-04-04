@@ -1,15 +1,28 @@
 <?php
 
 require_once("Framework/Controller.class.php");
-require_once("vendor/mashape/unirest-php/src/Unirest.php");
+require("vendor/autoload.php");
+
+ use Monolog\Logger;
+ use Monolog\Handler\StreamHandler;
 
 class IndexController extends Controller
 {
+    private $log;
+
+    public function init()
+    {
+        // create a log channel
+         $this->log = new Logger('serverlog');
+         $this->log->pushHandler(new StreamHandler('server.log', Logger::INFO));
+    }
 
    public function index()
    {
         $headers = array('Accept' => 'application/json');
         $response = Unirest\Request::get('http://unicorns.idioti.se/', $headers);
+
+        $this->log->info("Requested info about all unicorns.");
 
         require_once("Models/ListModel.php");
         $model = new ListModel();
@@ -28,9 +41,12 @@ class IndexController extends Controller
         require_once("Models/DetailsModel.php");
         $model = new DetailsModel($response->body->name, $response->body->description, 
             $response->body->image, $response->body->reportedBy,  $response->body->spottedWhen);
+
+        $this->log->info("Requested info about: " . $model->name);
+
         return parent::view($model);
    }
-   
+
 }
 
 ?>

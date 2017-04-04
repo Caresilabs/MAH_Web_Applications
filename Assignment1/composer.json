@@ -1,0 +1,17 @@
+{
+    "name": "ae5361/assignment1",
+    "description": "-",
+    "type": "project",
+    "require": {
+        "monolog/monolog": "^1.22",
+        "mashape/unirest-php": "dev-master"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Simon Bothen",
+            "email": "caresilabs@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable"
+}

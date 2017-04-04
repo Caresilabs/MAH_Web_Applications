@@ -8,7 +8,7 @@
     <li class="list-group-item">
         <p>
             <?= $value->id ?>: <?= $value->name ?> 
-            <input class="pull-right" onclick="location.href='index.php?action=details&id=<?= $value->id ?>'" type="button" value="Läs mer" />
+            <input class="pull-right" onclick="location.href='/home/details?id=<?= $value->id ?>'" type="button" value="Läs mer" />
         </p>
     </li>
 

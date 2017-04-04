@@ -11,16 +11,15 @@
 
             <hr>
             
-            <form action="index.php" method="get">
-                <input type="hidden" name="action" value="details">
-
+            <form action="/home/details" method="get">
+                
                <div class="form-group">
                     <label for="id">Id på en enhörning</label>
-                    <input type="text" id="id" name="id" class="form-control" required>
+                    <input type="text" id="id" name="id" class="form-control" autocomplete="off" required>
                 </div>
                 <div class="form-group">
                     <input type="submit" value="Visa enhörning" class="btn btn-success">
-                    <input onclick="location.href='index.php'" value="Visa alla enhörningar" class="btn btn-primary">
+                    <input onclick="location.href='/'" value="Visa alla enhörningar" class="btn btn-primary">
                 </div>
             </form>
             

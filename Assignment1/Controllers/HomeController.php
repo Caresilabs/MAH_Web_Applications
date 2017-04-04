@@ -6,13 +6,13 @@ require("vendor/autoload.php");
  use Monolog\Logger;
  use Monolog\Handler\StreamHandler;
 
-class IndexController extends Controller
+class HomeController extends Controller
 {
     private $log;
 
     public function init()
     {
-        // create a log channel
+         // create a log channel
          $this->log = new Logger('serverlog');
          $this->log->pushHandler(new StreamHandler('server.log', Logger::INFO));
     }
@@ -37,6 +37,10 @@ class IndexController extends Controller
    {
         $headers = array('Accept' => 'application/json');
         $response = Unirest\Request::get('http://unicorns.idioti.se/' . $id, $headers);
+     
+        if ($response->code != "200") {
+            return parent::error($response->code);
+        }
 
         require_once("Models/DetailsModel.php");
         $model = new DetailsModel($response->body->name, $response->body->description, 

@@ -7,8 +7,8 @@ class DetailsModel
     public $imageSrc;
     public $reportedBy;
     public $spottedWhen;
-
-    public function __construct($name, $description, $imageSrc, $reportedBy, $spottedWhen) 
+    
+    public function __construct($name, $description, $imageSrc, $reportedBy, $spottedWhen)
     {
         $this->name = $name;
         $this->description = $description;

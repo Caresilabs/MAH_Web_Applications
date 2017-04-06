@@ -1,5 +1,7 @@
 <?php
 
+require("Framework/FHelpers.php");
+
 $urlArgs = array_filter(explode('/', $_SERVER['PHP_SELF']));
 
 $name = "Home";   //ucfirst(basename($_SERVER['PHP_SELF'], '.php')); //__FILE__
@@ -16,8 +18,9 @@ if (count($urlArgs) > 1)
 //if (isset($_GET['controller']) && !empty($_GET['controller'])) {
 //    $name = $_GET['controller'];
 //}
-$controllerName = $name  . "Controller"; 
 
+// Create new Controller
+$controllerName = $name . "Controller";
 $controllerPath = "Controllers/" . $controllerName . ".php";
 if (file_exists($controllerPath)) {
     require_once($controllerPath);
@@ -26,13 +29,5 @@ if (file_exists($controllerPath)) {
     error(404);
 }
 
-
-// Globals
-
-function error($er)
-{
-    http_response_code($er);
-    include_once("Views/_Shared/Errors/Error" . $er . ".php");
-}
 
 ?>

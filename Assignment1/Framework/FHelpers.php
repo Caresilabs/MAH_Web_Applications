@@ -2,6 +2,10 @@
 
 // Globals
 
+define("HTTP_GET", "GET");
+define("HTTP_POST", "POST");
+define("HTTP_PUT", "PUT");
+
 function error($er)
 {
     $model = $er;

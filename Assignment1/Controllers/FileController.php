@@ -22,8 +22,6 @@ class FileController extends Controller
         echo "myfile" . $test;
     }
     
-
-    
 }
 
 ?>

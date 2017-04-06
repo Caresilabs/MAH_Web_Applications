@@ -2,10 +2,10 @@
 
 require("Framework/FHelpers.php");
 
-$urlArgs = array_filter(explode('/', $_SERVER['PHP_SELF']));
+$urlArgs = array_filter(explode('/', $_SERVER['PHP_SELF'])); //ucfirst(basename($_SERVER['PHP_SELF'], '.php')); //__FILE__
 
-$name = "Home";   //ucfirst(basename($_SERVER['PHP_SELF'], '.php')); //__FILE__
-$action = "index";
+$name = "Home";   // Default Controller
+$action = "index"; // Default Action
 if (count($urlArgs) > 1)
 {
     $name = ucfirst($urlArgs[2]);
@@ -26,6 +26,7 @@ if (file_exists($controllerPath)) {
     require_once($controllerPath);
     $controller = new $controllerName($name, $action);
 } else {
+    // Report page not found
     error(404);
 }
 

@@ -5,10 +5,13 @@ class Controller
     private $baseName;
     private $actionName;
     
+    public  $method;
+    
     public function __construct($name, $action)
     {
         $this->baseName = $name;
         $this->actionName = $action;
+        $this->method = $_SERVER["REQUEST_METHOD"];
         
         // INIT
         if (method_exists($this, "init")) {
@@ -16,9 +19,31 @@ class Controller
         }
         
         // CALL
-        $params = (array)$_GET;
+        $params = null; //(array)$_GET;
+        if ($this->method == HTTP_GET) {
+            $params = (array)$_GET;
+        } else if ($this->method == HTTP_POST) {
+            $params = (array)$_POST;
+        } else if ($this->method == HTTP_PUT) {
+            $params = (array)$_PUT;
+        }
+        
         if (method_exists($this, $this->actionName)) {
-            call_user_func_array(array($this, $this->actionName), $params);
+            $p = (new ReflectionMethod($this, $action))->getParameters();
+            
+            $newParams = array();
+            foreach ($p as $param) {
+                if (array_key_exists($param->getName(), $params )) {
+                    $newParams[] = $params[$param->getName()];
+                } else if ($param->isOptional()) {
+                    $newParams[] = $param->getDefaultValue();
+                }
+            }
+            
+            if (count($newParams) == count($p))
+                call_user_func_array(array($this, $this->actionName), $newParams);
+            else
+                return $this->error(404);
         } else {
             return $this->error(404);
         }
@@ -31,8 +56,12 @@ class Controller
     
     protected function error($er)
     {
-        //http_response_code($er); //include_once("Views/_Shared/Errors/Error" . $er . ".php");
         error($er);
+    }
+
+    protected function isMethod($method)
+    {
+        return $this->method == $method;
     }
 }
 

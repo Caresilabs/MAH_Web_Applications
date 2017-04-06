@@ -6,6 +6,7 @@ require("vendor/autoload.php");
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
 
+
 class HomeController extends Controller
 {
     private $log;
@@ -19,6 +20,8 @@ class HomeController extends Controller
     
     public function index()
     {
+        //if (!$this->isMethod(HTTP_GET)) return error(404);
+
         $headers = array('Accept' => 'application/json');
         $response = Unirest\Request::get('http://unicorns.idioti.se/', $headers);
         
@@ -30,7 +33,7 @@ class HomeController extends Controller
             $model->add($value);
         }
         
-        return parent::view($model);
+        return $this->view($model);
     }
     
     public function details($id)
@@ -48,7 +51,7 @@ class HomeController extends Controller
         
         $this->log->info("Requested info about: " . $model->name);
         
-        return parent::view($model);
+        return $this->view($model);
     }
     
 }

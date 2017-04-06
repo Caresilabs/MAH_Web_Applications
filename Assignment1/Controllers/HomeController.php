@@ -1,6 +1,6 @@
 <?php
 
-require_once("Framework/Controller.class.php");
+require_once("Framework/Controller.php");
 require("vendor/autoload.php");
 
 use Monolog\Logger;

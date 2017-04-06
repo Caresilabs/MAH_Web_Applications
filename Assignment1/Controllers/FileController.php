@@ -1,6 +1,6 @@
 <?php
 
-require_once("Framework/Controller.class.php");
+require_once("Framework/Controller.php");
 require("vendor/autoload.php");
 
 use Monolog\Logger;
@@ -17,9 +17,9 @@ class FileController extends Controller
         $this->log->pushHandler(new StreamHandler('server.log', Logger::INFO));
     }
     
-    public function index($fag)
+    public function index($test)
     {
-        echo "myfile" . $fag;
+        echo "myfile" . $test;
     }
     
 

@@ -11,9 +11,9 @@
 |
 */
 
- $app->get('/', function () use ($app) {
-     return $app->version();
- });
+/*$app->get('/', function () use ($app) {
+    return $app->version();
+});*/
 
 $app->get('products', 'ProductsController@index');
 $app->get('products/{id}', 'ProductsController@show');

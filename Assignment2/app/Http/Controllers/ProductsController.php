@@ -31,11 +31,11 @@ class ProductsController extends Controller
         $product->description = $request->description;
         
         $product->save();
-
+        
         foreach ($request->get("stores") as $store) {
             $product->stores()->attach($store);
         }
         
-          return response()->json(["success" => true]);
+        return response()->json(["success" => true]);
     }
 }

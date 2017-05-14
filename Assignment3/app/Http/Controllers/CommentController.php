@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace DevPress\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Comment;
+use DevPress\Comment;
 
 class CommentController extends Controller
 {

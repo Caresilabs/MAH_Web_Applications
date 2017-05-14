@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace DevPress\Http\Controllers\Auth;
 
-use App\User;
-use App\Http\Controllers\Controller;
+use DevPress\User;
+use DevPress\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -27,7 +27,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/blog';
 
     /**
      * Create a new controller instance.

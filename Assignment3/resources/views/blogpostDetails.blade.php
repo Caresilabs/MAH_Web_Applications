@@ -3,19 +3,28 @@
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
       <div class="panel panel-default">
-        <div class="panel-heading">Post Preview      
-      @if (Route::has('login'))
+        <div class="panel-heading">Dev Post</div>
+
+        <div class="panel-body">
+
+         @if (!Auth::guest())
          <form action="{{action('BlogpostController@destroy', $post->id)}}" method="POST">
                   {{ csrf_field() }}
                   <input type="hidden" name="_method" value="DELETE">
-                  <button type="submit" class="btn btn-danger"> Delete </button>
+                  <button type="submit" class="btn btn-danger pull-right"> Delete </button>
         </form>
+        <a class="btn btn-small btn-success pull-right" href="{{ action('BlogpostController@edit', $post->id) }}">Edit</a>
+        </br>
         @endif
-</div>
-        <div class="panel-body">
 
           <h2>{{ $post->title }}</h2>
+          <em>Posted: {{ $post->created_at->format('d/m/Y') }}</em>
+          @if($post->updated_at != null)
+            </br>
+            <i>Updated: {{ $post->updated_at->format('d/m/Y') }}</i>
+          @endif
 
+          <hr/> 
           <p>{!! $post->body !!}</p>
 
 
@@ -43,13 +52,15 @@
           <h3>{{ $comment->title }}</h3>
           <p>{{ $comment->comment }}</p>
 
+@if (!Auth::guest())
              <form action="{{action('CommentController@destroy', $comment->id)}}" method="POST">
                   {{ csrf_field() }}
                   <input type="hidden" name="_method" value="DELETE">
                   <button type="submit" class="btn btn-danger"> Delete </button>
              </form>
-
-          <hr /> @endforeach
+@endif
+          <hr /> 
+          @endforeach
 
 
         </div>

@@ -4,20 +4,24 @@
     <div class="col-md-8 col-md-offset-2">
       <div class="panel panel-default">
         <div class="panel-heading">Posts
-          @if (Route::has('login'))
-             <a class="btn btn-small btn-success pull-right" href="{{ action('BlogpostController@create') }}">Create Post</a>
-          @endif
         </div>
 
         <div class="panel-body">
 
-          @foreach ($posts as $post)
-          <h2>{{ $post->title }}</h2>
+         @if (!Auth::guest())
+             <a class="btn btn-success" href="{{ action('BlogpostController@create') }}">Create Post</a>
+              <hr/>
+          @endif
 
-          {!! \Illuminate\Support\Str::words($post->body, 3,'....')  !!}
-          </br>
-          <a href="{{url('/blog', $post->id)}}">Read More</a>
-          <hr />
+        
+          @foreach ($posts as $post)
+            <h2>{{ $post->title }}</h2>
+            <strong>{{ $post->created_at->diffForHumans() }}</strong>
+            </br></br>
+            {!! \Illuminate\Support\Str::words(strip_tags($post->body), 3,'....')  !!}
+            </br>
+            <a href="{{action('BlogpostController@show', $post->id)}}">Read More</a>
+            <hr />
           @endforeach
 
 

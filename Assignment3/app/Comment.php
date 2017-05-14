@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace DevPress;
 
 use Illuminate\Database\Eloquent\Model;
 

@@ -63,14 +63,14 @@ class BlogpostController extends Controller
     }
     
     public function update(Request $request)
-    {     
+    {
         $post = Blogpost::find($request->id);
         $post->title = $request->title;
         $post->body = $request->body;
         $post->updated_at = \Carbon\Carbon::now()->toDateTimeString();
         
         $post->save();
-          
+        
         $post->tags()->detach();
         
         $tags = $request->input('tags');
@@ -91,12 +91,12 @@ class BlogpostController extends Controller
         
         return view('blogpostDetails', ['post' =>  $post ]);
     }
-
-     public function destroy($id)
+    
+    public function destroy($id)
     {
         $post = Blogpost::find($id);
         $post->delete();
         
-         return redirect()->action('BlogpostController@index');
+        return redirect()->action('BlogpostController@index');
     }
 }

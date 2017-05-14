@@ -8,7 +8,7 @@
 
         <div class="panel-body">
 
-         @if (!Auth::guest())
+          @if (!Auth::guest())
              <a class="btn btn-success" href="{{ action('TagController@create') }}">Create New Tag</a>
               <hr/>
           @endif
@@ -21,13 +21,9 @@
             <p>(This is super nerdy btw...)</p>
             @endif
         
-        <ul>
+          <ul>
              @foreach ($tag->posts as $post)
-           
-             <li>
-             <a href="{{action('BlogpostController@show', $post->id)}}">{{$post->title}}</a>
-             </li>
-             
+             <li><a href="{{action('BlogpostController@show', $post->id)}}">{{$post->title}}</a></li>
              @endforeach
           </ul>
 
@@ -44,7 +40,6 @@
           
             <hr />
           @endforeach
-
 
         </div>
       </div>

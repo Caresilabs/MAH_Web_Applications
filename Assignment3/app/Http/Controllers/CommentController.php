@@ -23,7 +23,7 @@ class CommentController extends Controller
     {
         $comment = Comment::findOrFail($id);
         $comment->delete();
-
+        
         return redirect()->action('BlogpostController@show', $comment->blogpost_id);
     }
 }

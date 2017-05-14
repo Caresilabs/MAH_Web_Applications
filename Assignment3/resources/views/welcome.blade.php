@@ -85,6 +85,7 @@
                 <h2>
                 Welcome to DevPress, a developers blog page!
                 </h2>
+                <i>Start by navigating to the blog</i>
 
             </div>
         </div>

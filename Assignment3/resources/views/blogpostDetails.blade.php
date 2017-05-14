@@ -52,13 +52,14 @@
           <h3>{{ $comment->title }}</h3>
           <p>{{ $comment->comment }}</p>
 
-@if (!Auth::guest())
+          @if (!Auth::guest())
              <form action="{{action('CommentController@destroy', $comment->id)}}" method="POST">
                   {{ csrf_field() }}
                   <input type="hidden" name="_method" value="DELETE">
                   <button type="submit" class="btn btn-danger"> Delete </button>
              </form>
-@endif
+          @endif
+          
           <hr /> 
           @endforeach
 

@@ -8,6 +8,8 @@
 
           <form class="form-horizontal" role="form" method="POST" action="{{ action('BlogpostController@update', $post->id) }}">
             {{ csrf_field() }}
+            <input type="hidden" name="_method" value="PUT">
+
             <input type="hidden" name="id" value="{{$post->id}}">
 
             <label for="title" class="control-label">Title</label>

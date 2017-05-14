@@ -27,7 +27,7 @@ class CommentSeeder extends Seeder
 
         DB::table('comments')->insert([
             'title' => 'You all drunk people',
-            'comment' => 'Hey I thought this was a devblog, not a AA forum..',
+            'comment' => 'Hey I thought this was a devblog, not an AA forum..',
             'blogpost_id' => 1,
             'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
         ]);

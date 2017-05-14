@@ -9,11 +9,14 @@
         <div class="panel-body">
 
          @if (!Auth::guest())
-             <a class="btn btn-success" href="{{ action('BlogpostController@create') }}">Create Post</a>
-              <hr/>
+             <a class="btn btn-primary" href="{{ action('BlogpostController@create') }}">Create Post</a>
+            <hr/>   
           @endif
 
-        
+          <a class="btn btn-default" href="{{ action('TagController@index') }}">View by Tags</a>
+         
+         <hr/>
+
           @foreach ($posts as $post)
             <h2>{{ $post->title }}</h2>
             <strong>{{ $post->created_at->diffForHumans() }}</strong>

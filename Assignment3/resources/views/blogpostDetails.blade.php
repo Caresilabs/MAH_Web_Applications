@@ -13,7 +13,7 @@
                   <input type="hidden" name="_method" value="DELETE">
                   <button type="submit" class="btn btn-danger pull-right"> Delete </button>
         </form>
-        <a class="btn btn-small btn-success pull-right" href="{{ action('BlogpostController@edit', $post->id) }}">Edit</a>
+        <a class="btn btn-small btn-primary pull-right" href="{{ action('BlogpostController@edit', $post->id) }}">Edit</a>
         </br>
         @endif
 

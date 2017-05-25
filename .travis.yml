@@ -10,7 +10,7 @@ language: php
 php:
 - 7.0
 install:
-- sudo composer install
+- composer install
 script: vendor/bin/phpunit --configuration phpunit.xml --coverage-text
 deploy:
 - provider: script

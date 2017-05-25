@@ -11,9 +11,7 @@ php:
 - 7.0
 install:
 - composer install
-before_script:
-- cd Assignment4
-script: vendor/bin/phpunit --configuration phpunit.xml --coverage-text
+script: Assignment4/vendor/bin/phpunit --configuration Assignment4/phpunit.xml --coverage-text
 deploy:
 - provider: script
   skip-cleanup: true

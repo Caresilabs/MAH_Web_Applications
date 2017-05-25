@@ -18,6 +18,6 @@ class ExampleTest extends TestCase
     {
         $response = 200;
 
-	$this->asserEquals($response, 200);
+	$this->assertEquals($response, 200);
     }
 }

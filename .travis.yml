@@ -2,7 +2,7 @@ os:
 - linux
 addons:
   ssh_known_hosts:
-  - superfast467664.westeurope.cloudapp.azure.com
+  - superfast647664.westeurope.cloudapp.azure.com
 cache:
   directories:
   - "$HOME/.composer/cache"

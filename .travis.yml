@@ -16,7 +16,7 @@ deploy:
 - provider: script
   skip-cleanup: true
   script:
-  - rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR $DEPLOY_USER@$DEPLOY_HOST:/home/kingen
+  - rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR $DEPLOY_USER@$DEPLOY_HOST:/home/kingen/superfast
   on:
     branch: master
 notifications:

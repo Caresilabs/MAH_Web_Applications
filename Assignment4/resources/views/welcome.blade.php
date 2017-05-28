@@ -11,6 +11,7 @@
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
         <!-- Styles -->
+         <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cosmo/bootstrap.min.css" rel="stylesheet" integrity="sha384-h21C2fcDk/eFsW9sC9h0dhokq5pDinLNklTKoxIZRUn3+hvmgQSffLLQ4G4l2eEr" crossorigin="anonymous">
         <style>
             html, body {
                 background-color: #fff;
@@ -86,6 +87,19 @@
                 Welcome to DevPress, a developers blog page!
                 </h2>
                 <i>Start by navigating to the blog</i>
+                
+                </br>
+                </br>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                       Latest Post: </br>
+                      <h3> {{ $post->title }} </h3>
+                        {!! \Illuminate\Support\Str::words(strip_tags($post->body), 3,'....')  !!}
+                        </br>
+                        <a href="{{action('BlogpostController@show', $post->id)}}">Read More</a>
+            
+                    </div>
+                </div>
 
             </div>
         </div>

@@ -9,14 +9,19 @@ cache:
 language: php
 php:
 - 7.0
+services:
+  - mysql
 install:
 - composer install
-- cp travis.env .env
+- cp travis_test.env .env
 - mysql -e 'create database blog;'
 - php artisan key:generate
 - php artisan migrate
 - php artisan db:seed
 script: vendor/bin/phpunit --configuration phpunit.xml --coverage-text
+after_script:
+- cp travis.env .env
+- php artisan key:generate
 deploy:
 - provider: script
   skip-cleanup: true

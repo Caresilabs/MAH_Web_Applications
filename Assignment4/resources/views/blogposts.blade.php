@@ -19,9 +19,14 @@
 
           @foreach ($posts as $post)
             <h2>{{ $post->title }}</h2>
+            <p>
+              Tags: 
+              @foreach ($post->tags as $tag)
+                <a href="{{ action('TagController@showtag', $tag->id) }}">{{ $tag->name }}</a>, @endforeach
+            </p>
             <strong>{{ $post->created_at->diffForHumans() }}</strong>
             </br></br>
-            {!! \Illuminate\Support\Str::words(strip_tags($post->body), 3,'....')  !!}
+            {!! \Illuminate\Support\Str::words(strip_tags($post->body), 3,'...')  !!}
             </br>
             <a href="{{action('BlogpostController@show', $post->id)}}">Read More</a>
             <hr />

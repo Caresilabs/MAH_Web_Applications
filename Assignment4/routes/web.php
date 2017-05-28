@@ -21,6 +21,7 @@ Route::get('/blog', 'BlogpostController@index');
 Route::get('/blog/show/{id}', 'BlogpostController@show');
 
 Route::get('/tag', 'TagController@index');
+Route::get('/tag/{id}', 'TagController@showtag');
 
 Route::group(['middleware' => 'auth'], function () {
     

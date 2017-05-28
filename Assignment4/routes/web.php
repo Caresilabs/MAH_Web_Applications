@@ -11,11 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 Auth::routes();
 
+Route::get('/', 'WelcomeController@index');
 
 Route::get('/blog', 'BlogpostController@index');
 Route::get('/blog/show/{id}', 'BlogpostController@show');

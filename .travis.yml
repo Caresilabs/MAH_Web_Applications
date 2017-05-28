@@ -11,6 +11,9 @@ php:
 - 7.0
 install:
 - composer install
+- cp travis.env .env
+- mysql -e 'create database blog;'
+- php artisan key:generate
 script: vendor/bin/phpunit --configuration phpunit.xml --coverage-text
 deploy:
 - provider: script

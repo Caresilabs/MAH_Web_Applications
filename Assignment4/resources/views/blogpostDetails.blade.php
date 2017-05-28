@@ -37,7 +37,7 @@
         <div class="panel-body">
 
           @foreach ($post->tags as $tag)
-          <em>{{ $tag->name }},</em> @endforeach
+          <a href="{{ action('TagController@showtag', $tag->id) }}">{{ $tag->name }}</a>, @endforeach
 
 
         </div>

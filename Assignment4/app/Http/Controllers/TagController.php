@@ -12,6 +12,13 @@ class TagController extends Controller
         $tags = Tag::with('posts')->orderBy('name')->get();
         return view('tags', [ 'tags' => $tags ]);
     }
+
+    public function showtag($id)
+    {
+        $tag = Tag::find($id);
+        $tags[] = $tag;
+        return view('tags', [ 'tags' => $tags ]);
+    }
     
     public function create()
     {

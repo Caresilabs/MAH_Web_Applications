@@ -19,7 +19,7 @@ install:
 - php artisan migrate
 - php artisan db:seed
 script: vendor/bin/phpunit --configuration phpunit.xml --coverage-text
-after_script:
+after_success:
 - rm .env
 - cp travis.env .env
 - php artisan key:generate

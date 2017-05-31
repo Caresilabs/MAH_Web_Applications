@@ -23,6 +23,7 @@ after_success:
 - rm .env
 - cp travis.env .env
 - php artisan key:generate
+- chmod 777 -R storage/
 deploy:
 - provider: script
   skip-cleanup: true
